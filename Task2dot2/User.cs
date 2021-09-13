@@ -9,7 +9,6 @@ namespace Task2dot2
         public const string FILE_PATH = @"‪C:\Users\PauliusRuikis\Desktop\config.xml";
         public string Name { get; set; }
         public List<Window> WindowsList { get; set; }
-
         public User()
         {
 

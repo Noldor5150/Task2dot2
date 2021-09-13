@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-
+﻿
 namespace Task2dot2
 {
   public class Window
