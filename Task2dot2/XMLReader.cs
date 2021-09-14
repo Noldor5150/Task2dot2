@@ -7,25 +7,27 @@ namespace Task2dot2
 {
    public static class XMLReader
     {
-        private const string READING_FILE_PATH = @"C:\Users\PauliusRuikis\Desktop/config.xml";
-        public static List<User> CreateReadableData()
+        /// <summary>
+        /// Helper - only reads  config XMl file in specific structure
+        /// </summary>
+        /// <param name="path">  XML config file location </param>
+        /// <returns> List of users </returns>
+        public static List<User> GetUsersFromConfig(string path)
         {
-            XElement xelement = XElement.Load(READING_FILE_PATH);
-            List<User> UserList = (from element in xelement.Descendants("login")
+            XElement xelement = XElement.Load(path);
+           return (from element in xelement.Descendants("login")
                                select new User
                                {
                                    Name = element.Attribute("name").Value.ToString(),
                                    WindowsList = (from window in element.Descendants("window")
-                                                  select new Window
-                                                  {
-                                                      Title = window.Attribute("title").Value.ToString(),
-                                                      Top = (int?)window.Element("top"),
-                                                      Left = (int?)window.Element("left"),
-                                                      Width = (int?)window.Element("width"),
-                                                      Height = (int?)window.Element("height"),
-                                                  }).ToList()
+                                                  select  new Window(window.Attribute("title").Value.ToString(), 
+                                                  (int?)window.Element("top"),
+                                                 (int?)window.Element("left"),
+                                                 (int?)window.Element("width"),
+                                                (int?)window.Element("height")
+                                                  )).ToList()
                                }).ToList();
-            return UserList;
+            
         }
     }
 }

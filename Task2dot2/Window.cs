@@ -3,6 +3,9 @@ namespace Task2dot2
 {
   public class Window
     {
+        /// <summary>
+        /// creates Window object 
+        /// </summary>
         private const int DEFAULT_HEIGHT_VAL = 150;
 
         private const int DEFAULT_LEFT_VAL = 0;
@@ -15,10 +18,6 @@ namespace Task2dot2
         public int? Left { get; set; }
         public int? Width { get; set; }
         public int? Height { get; set; }
-        public Window()
-        {
-
-        }
         public Window( string title, int? top, int? left, int? width, int? height )
         {
             Title = title;
@@ -27,25 +26,36 @@ namespace Task2dot2
             Width = width;
             Height = height;
         }
-        public bool IsWindowCorrect( Window window )
+        /// <summary>
+        /// if none of selected Window parameter are null
+        /// </summary>
+        /// <returns> true </returns>
+        public bool IsWindowCorrect(  )
         {
-            return ( window.Height != null && window.Left != null && window.Top != null && window.Width != null );
+            return ( Height != null && Left != null && Top != null && Width != null );
         }
-        public Window RepairWindow( Window window )
+
+        /// <summary>
+        /// takes Window object, checks if selected parameters are null, ir it is, reasigns them, to default constants
+        /// </summary>
+        /// <param name="window"></param>
+        /// <returns> correted Window object </returns>
+        public Window GetRepairedWindow(Window window)
         {
-            if( window.Height == null )
+           // Window repairedWindow = (window)this.MemberwiseClone();
+            if(window.Height == null )
             {
                 window.Height = DEFAULT_HEIGHT_VAL;
             }
-            if( window.Left == null )
+            if(window.Left == null )
             {
                 window.Left = DEFAULT_LEFT_VAL;
             }
-            if( window.Top == null )
+            if(window.Top == null )
             {
                 window.Top = DEFAULT_TOP_VAL;
             }
-            if( window.Width == null )
+            if(window.Width == null )
             {
                 window.Width = DEFAULT_WIDTH_VAL;
             }

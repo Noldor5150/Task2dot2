@@ -6,9 +6,15 @@ namespace Task2dot2
 {
    public class User
     {
-        public const string FILE_PATH = @"‪C:\Users\PauliusRuikis\Desktop\config.xml";
+        /// <summary>
+        /// Creats User object with Windows list inside
+        /// </summary>
         public string Name { get; set; }
         public List<Window> WindowsList { get; set; }
+
+        /// <summary>
+        /// Used only for reading config
+        /// </summary>
         public User()
         {
 
@@ -25,9 +31,13 @@ namespace Task2dot2
                 throw new ArgumentException("something went wrong!!!");
             }
         }
-        public bool IsLoginCorrect( User user )
+        /// <summary>
+        /// checks specific parameters of Window objects in the list 
+        /// </summary>
+        /// <returns> true </returns>
+        public bool IsLoginCorrect()
         {
-            return ( !(user.WindowsList.Exists( window => window.Title == "main" ) ) || ( user.WindowsList.Exists( window => window.Title == "main" && window.IsWindowCorrect (window ) ) && user.WindowsList.Count == 1 ) );
+            return ( !(WindowsList.Exists( window => window.Title == "main" ) ) || ( WindowsList.Exists( window => window.Title == "main" && window.IsWindowCorrect()) && WindowsList.Count == 1 ) );
         }
     }
 }

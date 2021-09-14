@@ -8,10 +8,11 @@ namespace Task2dot2
                                          
         static void Main(string[] args)
         {
-            var data = XMLReader.CreateReadableData();
-            Controler controler = new Controler(data);
-            var repairedData = controler.RepairedUsersList(data);
-            controler.CreateJsonFiles(repairedData);
+            string path = @"C:\Users\PauliusRuikis\Desktop/config.xml";
+            var data = XMLReader.GetUsersFromConfig(path);
+            Controller controller = new Controller(data);
+            var repairedData = controller.RepairedUsers(data);
+            controller.SaveToJson(repairedData,path);
 
         }
     }
